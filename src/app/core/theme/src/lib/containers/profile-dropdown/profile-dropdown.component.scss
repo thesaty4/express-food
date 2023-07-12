@@ -1,0 +1,81 @@
+@import 'main';
+
+.profile__dropdown {
+  position: relative;
+  @include flex-item-center;
+  height: 42px;
+  padding-right: 25px;
+  &:hover {
+    cursor: pointer;
+    border-radius: 5px;
+    .dropdown-list {
+      display: block;
+    }
+    .material-icons {
+      transform: rotate(180deg);
+    }
+  }
+  span {
+    vertical-align: middle;
+  }
+}
+
+:host ::ng-deep .profile__dropdown__image {
+  width: 33px;
+  height: 33px;
+  background-color: $primary-cta;
+  align-items: center;
+  padding: 10px;
+  border-radius: 50%;
+  @include flex-justify-center;
+
+  .profile-initial {
+    font-size: 12px;
+    color: $white;
+    @media (max-width: $tablet) {
+      padding: 10px;
+    }
+  }
+}
+
+.material-icons {
+  color: $grayLight;
+}
+
+.dropdown-list {
+  position: absolute;
+  width: 90%;
+  left: 10px;
+  top: 95%;
+  display: none;
+  background-color: $white;
+  z-index: $header-menu-dropdown-z;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px $grayLight;
+  .list-item {
+    text-decoration: none;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    color: $secondary;
+    font-weight: $medium;
+    &:hover {
+      background-color: $hoverBGlight;
+    }
+  }
+}
+
+.dropdown-text {
+  font-size: 12px;
+  white-space: nowrap;
+  margin: 0 7px 0 5px;
+  font-weight: $medium;
+  @media only screen and (max-width: 1200px) {
+    font-size: 12px;
+  }
+  @media only screen and (max-width: $tablet) {
+    font-size: 12px;
+    margin: 0 5px;
+    white-space: nowrap;
+  }
+}

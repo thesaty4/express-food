@@ -1,0 +1,255 @@
+@import 'main';
+.logo {
+  color: $white;
+  font-size: 18px;
+  text-align: center;
+  position: relative;
+  @include flex-justify-center;
+}
+
+.change .bar1 {
+  transform: rotate(-45deg) translate(-8px, 7px);
+}
+
+.sidenav-header {
+  @include flex-all-center;
+  width: 100%;
+  padding: 10px 15px;
+  background: $nav-bg-color;
+  height: 68px;
+  .logo {
+    height: 40px;
+    width: 65px;
+    img {
+      @include full-img;
+    }
+  }
+  @media screen and (max-width: $tablet) {
+    height: 65px;
+  }
+}
+
+.overlay-link {
+  position: absolute;
+  inset: 0 0 0 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.sidebar {
+  padding-top: 15px;
+  &__container {
+    overflow-y: auto;
+    height: calc(100vh - 60px);
+    background: $nav-bg-color;
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+
+    .main_heading {
+      position: relative;
+      margin: 4px 3px;
+      &_anchor {
+        display: block;
+        text-align: center;
+        color: $subItem_heading;
+        border: none;
+        -webkit-transition: all 400ms;
+        -moz-transition: all 400ms;
+        -ms-transition: all 400ms;
+        -o-transition: all 400ms;
+        transition: all 400ms;
+        min-height: 56px;
+        zoom: 0.98;
+        text-decoration: none;
+        border-radius: 3px;
+        border-radius: 3px;
+        width: 76px;
+        @media (max-width: $tablet) {
+          font-size: 14px;
+        }
+        span {
+          margin-left: 20px;
+          font-weight: $medium;
+        }
+      }
+      &:hover {
+        background-color: $subItem_heading_hover;
+        border-radius: 3px;
+      }
+      .sidenav_logo {
+        width: 18px;
+        height: 18px;
+        margin: auto;
+        img {
+          @include full-img;
+        }
+      }
+    }
+
+    .subitems {
+      visibility: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: visibility 1.5s, max-height 1.5s, opacity 1.5s linear;
+      cursor: pointer;
+    }
+  }
+}
+
+.child-active {
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: 500px !important;
+  transition: visibility 1.5s, max-height 1.5s, opacity 1.5s linear !important;
+  .subitems_heading {
+    @include flex-item-center;
+  }
+}
+
+.subitems_heading {
+  margin-bottom: 9px;
+  cursor: pointer;
+  &_anchor {
+    @include flex-item-center;
+
+    color: $subItem_heading;
+    border: none;
+    -webkit-transition: all 400ms;
+    -moz-transition: all 400ms;
+    -ms-transition: all 400ms;
+    -o-transition: all 400ms;
+    transition: all 400ms;
+    height: 50px;
+    text-decoration: none;
+    span {
+      margin-left: 12px;
+      font-weight: $medium;
+      width: 4.5rem;
+    }
+  }
+  &:hover {
+    background-color: $hoverBGlight;
+    border-radius: 3px;
+  }
+  .sidenav_logo {
+    width: 18px;
+    height: 18px;
+    img {
+      @include full-img;
+    }
+  }
+}
+
+.parent-active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+.change {
+  margin-left: 10px;
+}
+
+.menu_button {
+  width: 35px;
+  height: 65px;
+  margin-top: 15px;
+  .onHoverHide {
+    display: none;
+  }
+  &:hover {
+    .onHoverHide {
+      display: block;
+    }
+    .onHoverShow {
+      display: none;
+    }
+  }
+  img {
+    @include full-img;
+  }
+}
+
+:host ::ng-deep .material-icons {
+  height: auto;
+  width: auto;
+}
+
+.menu_button:hover {
+  cursor: pointer;
+}
+
+.divider {
+  content: '';
+  position: relative;
+  height: 1px;
+  left: 15px;
+  width: calc(100% - 30px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-wrapper {
+  overflow-y: auto;
+  position: relative;
+}
+
+.active a .svg-icon {
+  filter: brightness(0) invert(1);
+}
+
+.svg-icon {
+  @media screen and (max-width: 800px) {
+    height: 13px;
+  }
+}
+
+.icon-label {
+  margin-top: 5px;
+  font-size: 10px !important;
+  letter-spacing: 0.6px;
+  font-weight: 400;
+}
+
+.collapse-a {
+  position: relative;
+}
+
+.collapse-a .caret {
+  position: absolute;
+  right: 0px;
+  top: 24px;
+  color: $white;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -ms-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.collapsed .caret {
+  position: absolute;
+  right: 0px;
+  top: 24px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.collapse ul li a {
+  padding-left: 10px;
+}
+
+// tablet

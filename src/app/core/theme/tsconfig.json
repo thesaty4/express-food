@@ -1,0 +1,9 @@
+ {
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es2015",
+    "types": ["node", "jest"],
+  },
+  "include": ["**/*.ts"],
+ }

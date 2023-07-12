@@ -1,0 +1,107 @@
+@import 'main';
+
+::ng-deep .ranges {
+  ul {
+    .active {
+      background-color: $primary-cta !important;
+    }
+  }
+}
+
+::ng-deep .daterangepicker td.active {
+  background-color: $primary-cta;
+}
+::ng-deep .daterangepicker td.active:hover {
+  background-color: $primary-cta;
+}
+::ng-deep .drp-buttons {
+  .cancelBtn {
+    @include secondary-button;
+    width: 6vw;
+  }
+  .applyBtn {
+    @include primary-button;
+    width: 6vw;
+  }
+}
+
+.calendar-image {
+  margin-left: 5px;
+}
+
+:host ::ng-deep .date-range-input {
+  font-size: 12px;
+  font-weight: $bolder;
+  @media only screen and (max-width: 1200px) {
+    font-size: 12px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 10px;
+  }
+}
+
+.wrapper {
+  @include flex-space-between-cen-Algn;
+}
+
+:host
+  ::ng-deep
+  .mat-form-field-appearance-outline
+  .mat-form-field-flex:hover
+  > .mat-form-field-outline-thick
+  > .mat-form-field-outline-start {
+  border-color: $primary-cta;
+}
+
+:host
+  ::ng-deep
+  .mat-form-field-appearance-outline
+  .mat-form-field-flex:hover
+  > .mat-form-field-outline-thick
+  > .mat-form-field-outline-end {
+  border-color: $primary-cta;
+}
+
+:host
+  ::ng-deep
+  .mat-form-field-appearance-outline
+  .mat-form-field-flex:hover
+  > .mat-form-field-outline-thick
+  > .mat-form-field-outline-gap {
+  border-color: $primary-cta;
+  border-top-color: transparent;
+}
+
+:host ::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0px;
+}
+
+:host ::ng-deep .mat-input-element {
+  @media only screen and (max-width: 1250px) {
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  @include flex-item-center;
+  padding: 5px 0;
+  border: none;
+  input {
+    height: 36px;
+  }
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+  padding: 0 10px;
+}
+
+:host ::ng-deep .mat-form-field {
+  width: 100%;
+}
+
+:host::ng-deep {
+  .mat-form-field-appearance-outline .mat-form-field-outline{
+    color: $grayLight;
+  }
+}

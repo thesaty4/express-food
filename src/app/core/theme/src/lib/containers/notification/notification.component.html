@@ -1,0 +1,104 @@
+<div class="notification--header">
+  <div class="close--wrapper">
+    <div class="notification">Notifications</div>
+  </div>
+  <div class="reset-wrapper">
+    <img
+      src="assets/svg/notification-filter.svg"
+      alt="filter"
+      (click)="openFilterForm()"
+    />
+    <mat-icon (click)="closePopup()" class="material-icon" matSuffix
+      >cancel</mat-icon
+    >
+  </div>
+</div>
+<ng-container
+  *ngIf="isCustomizeVisible || isFilterVisible; else notificationListTemplate"
+>
+  <ng-container *ngIf="isCustomizeVisible; else filter">
+    <div>
+      <admin-notification-settings
+        (closeCustomize)="handleCustomizeClose()"
+      ></admin-notification-settings>
+    </div>
+  </ng-container>
+  <ng-template #filter>
+    <div class="filter--form">
+      <admin-notification-filter
+        [filterFG]="filterFG"
+        (filterApplied)="handleApplyFilter($event)"
+      ></admin-notification-filter>
+    </div>
+  </ng-template>
+</ng-container>
+<ng-template #notificationListTemplate>
+  <div class="notification--customize">
+    <div class="customize" (click)="handleCustomize($event)">
+      <img src="assets/svg/customize.svg" alt="setting" />
+      <div>Customise</div>
+    </div>
+    <div
+      class="dismiss"
+      (click)="dismisAll()"
+      *ngIf="notifications && notifications.length"
+    >
+      <img src="assets/svg/delete-transparent.svg" alt="delete" />
+      <div>Dismiss All</div>
+    </div>
+  </div>
+  <div class="notification--form">
+    <div
+      class="notification"
+      *ngIf="notifications && notifications.length; else emptyNotication"
+      scrollPagination
+      (scrolled)="getNotifications()"
+      [toggleScrollListener]="paginationDisabled"
+    >
+      <div
+        class="notification--item"
+        *ngFor="let item of notifications"
+        (click)="openNotifications($event, item)"
+        [ngClass]="{ unread: !item.read }"
+      >
+        <div class="profile">
+          {{ userService.userDetails.getProfileNickName() }}
+        </div>
+        <div class="notification--item--details">
+          <div class="title--container">
+            <div class="title">{{ item.notificationType | titlecase }}</div>
+            <div class="time">
+              {{ item.getTime(globalFilterService.timezone) }}
+            </div>
+            <div class="close">
+              <img
+                src="assets/svg/mat-cross.svg"
+                alt="close"
+                (click)="deleteNotification($event, item)"
+              />
+            </div>
+          </div>
+          <div
+            class="message"
+            [ngStyle]="{ color: item.read ? '#002046' : '#4b56c0' }"
+          >
+            {{
+              item.message.length > 33
+                ? item.message.substring(0, 33) + '...'
+                : item.message
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #emptyNotication>
+      <div class="empty-view">
+        <img src="assets/svg/empty-notification.svg" alt="empty" />
+        <div class="empty-view--title">No Notification</div>
+        <div class="empty-view--sub-title">
+          Currently you do not have any notification
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</ng-template>

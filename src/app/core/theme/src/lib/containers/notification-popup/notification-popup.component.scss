@@ -1,0 +1,115 @@
+@import 'main';
+
+.container {
+  width: 550px;
+  margin: 1px 0 0;
+  border-radius: 5px;
+  background-color: $white;
+}
+
+.header {
+  height: 51.7px;
+  padding: 14px 17px 12.7px 24px;
+  background-color: $header-background;
+  @include flex-space-between-cen-Algn;
+  &__title-container {
+    @include flex-item-center;
+    .title {
+      margin-left: 10px;
+      @include normal-sm-text;
+
+      color: $primary-black;
+    }
+  }
+
+  &__close {
+    cursor: pointer;
+  }
+}
+
+.body {
+  @include flex-col-space-around;
+  height: calc(100% - 51.7px);
+  padding: 18px;
+  &__text {
+    @include normal-sm-text;
+    text-align: center;
+    color: $primary-black;
+    margin: 19px 0;
+  }
+  .btn-container {
+    @include flex-all-center;
+    margin: 22px 0;
+    .btn {
+      width: 113px;
+      height: 35px;
+      margin: 0 0 0 27px;
+      border-radius: 3px;
+      @include flex-all-center;
+      cursor: pointer;
+      &__yes {
+        background-color: $primary-cta;
+        &__text {
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.78px;
+          text-align: center;
+          color: $white;
+        }
+        &:active {
+          background-color: $primary-pressed;
+        }
+        &:hover {
+          background-color: $primary-hover;
+        }
+      }
+      &__no {
+        border: 1px solid $primary-cta;
+        &__text {
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.78px;
+          text-align: center;
+          color: $primary-cta;
+        }
+        &:active {
+          border: 1px solid $primary-pressed;
+        }
+        &:hover {
+          border: 1px solid $primary-hover;
+        }
+      }
+    }
+  }
+}
+
+.allow-body {
+  padding: 26px 36px 51px 58px;
+  &__text {
+    @include normal-sm-text;
+    color: $primary-black;
+    margin: 0 0 30px 20px;
+  }
+
+  .btn__goto-settings {
+    width: 148px;
+    height: 35px;
+    border-radius: 17.5px;
+    background-color: $button-blue;
+    @include flex-all-center;
+    cursor: pointer;
+    &__text {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.78px;
+      text-align: center;
+      color: $white;
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+    &:hover {
+      transform: scale(0.97);
+    }
+  }
+}
