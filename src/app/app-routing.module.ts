@@ -5,6 +5,7 @@ import { LoginComponent } from './core/auth/components/login/login.component';
 import { PasswordResetComponent } from './core/auth/components/password-reset/password-reset.component';
 import { SignUpComponent } from './core/auth/components/sign-up/sign-up.component';
 import { HomeComponent } from './core/auth/components/home/home.component';
+import { NotFoundComponent } from './core/auth/components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -14,25 +15,34 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
-    children: [
-      {
-        path: '',
-        component: LoginComponent,
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
-      },
-      {
-        path: 'signup',
-        component: SignUpComponent,
-      },
-      {
-        path: 'rest-password',
-        component: PasswordResetComponent,
-      },
-    ],
   },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'signup',
+    component: SignUpComponent,
+  },
+  {
+    path: 'reset-password',
+    component: PasswordResetComponent,
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('../../projects/admin/src/app/app.module').then(
+        (m) => m.AppModule
+      ),
+  },
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('../../projects/web-user/src/app/app.module').then(
+        (m) => m.AppModule
+      ),
+  },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

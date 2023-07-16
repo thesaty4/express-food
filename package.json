@@ -10,6 +10,11 @@
     "e2e": "ng e2e"
   },
   "private": true,
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "express-food"
+    }
+  },
   "dependencies": {
     "@angular/animations": "~9.1.0",
     "@angular/common": "~9.1.0",
