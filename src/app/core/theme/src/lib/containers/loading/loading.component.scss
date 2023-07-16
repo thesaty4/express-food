@@ -1,0 +1,6 @@
+@import 'main';
+
+.loader {
+  height: 100%;
+  @include flex-all-center;
+}

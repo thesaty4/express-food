@@ -1,0 +1,14 @@
+<mat-tab-group
+  #matTab
+  (selectedTabChange)="onTabChanged($event)"
+  [selectedIndex]="selectedIndex"
+>
+  <mat-tab *ngFor="let tab of tabList">
+    <ng-template mat-tab-label>
+      <div class="messageTabWrapper">
+        <div><img [src]="tab.imgSrc" /></div>
+        <div *ngIf="tab.count">{{ tab.count }}</div>
+      </div>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

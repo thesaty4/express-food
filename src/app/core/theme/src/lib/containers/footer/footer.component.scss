@@ -1,0 +1,22 @@
+@import 'main';
+.footer {
+  @include flex-space-between-cen-Algn;
+  padding: 10px 3rem;
+  border-top: 2px solid $grayLight;
+  @media (max-width: $tablet) {
+    width: 93%;
+    margin-left: auto;
+    padding: 10px 1rem;
+  }
+  p {
+    margin: 0;
+  }
+  .links {
+    @include flex-item-center;
+    a {
+      color: $black;
+      margin-right: 20px;
+      text-decoration: none;
+    }
+  }
+}

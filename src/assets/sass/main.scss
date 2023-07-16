@@ -1,0 +1,32 @@
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+// color variables
+@import "abstracts/variables";
+
+// constant variables
+@import "abstracts/constants";
+
+// mixins
+@import "abstracts/mixins";
+
+// typography base
+@import "base/typography";
+
+// components input
+@import "components/input";
+
+// Font family
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: $whiteDeep;
+}
+::-webkit-scrollbar-thumb {
+  background: $grayLight;
+  border-radius: 10px;
+}
+
+*:not(mat-icon, i) {
+  font-family: Poppins;
+}

@@ -1,0 +1,180 @@
+<div class="wrapper">
+  <div *ngIf="showNotification" class="flash-notification">
+    <p [ngStyle]="{ color: flashNotification.notificationTextColor }">
+      {{ flashNotification.notificationMessage }}
+    </p>
+  </div>
+  <div
+    class="sidebar-panel"
+    id="sidebar"
+    [style.background-color]="backgroundColor"
+  >
+    <hospitality-bot-sidenav
+      (submenuItems)="subMenuItem($event)"
+      (navToggle)="sideNavToggle($event)"
+      [isExpanded]="isExpand"
+    ></hospitality-bot-sidenav>
+  </div>
+  <div
+    class="sidebar-panel"
+    id="sidebar"
+    [style.background-color]="backgroundColor"
+  >
+    <hospitality-bot-sidenav-expand
+      [bgColor]="bgColor"
+      [logoUrl]="logoUrl"
+      [title]="menuTitle"
+      [submenuItems]="menuItem"
+      [isExpanded]="isExpand"
+      (navToggle)="sideNavToggle($event)"
+    ></hospitality-bot-sidenav-expand>
+  </div>
+
+  <div class="main-panel" id="main-panel">
+    <div class="main-panel--header">
+      <!-- message header -->
+      <div
+        class="options"
+        [ngStyle]="
+          checkForMessageRoute()
+            ? { visibility: 'visible', width: '100%' }
+            : { visibility: 'hidden', height: '0px' }
+        "
+      >
+        <div class="breadcrums">
+          Conversation &gt; <span class="breadcrums_messages">Messages</span>
+        </div>
+        <div class="layoutMessageCheck" *ngIf="checkForMessageRoute()">
+          <div class="margBtm">
+            <admin-message-tab-menu></admin-message-tab-menu>
+          </div>
+          <div class="dropdown-wrapper">
+            <admin-profile-dropdown></admin-profile-dropdown>
+          </div>
+        </div>
+      </div>
+      <!-- main-headers -->
+      <div
+        class="options"
+        [ngStyle]="
+          !checkForMessageRoute()
+            ? { visibility: 'visible' }
+            : { visibility: 'hidden', height: '0px' }
+        "
+      >
+        <div class="options1" [ngClass]="{ disabled: isGlobalFilterVisible }">
+          <div class="global_search">
+            <admin-search-bar
+              [parentForm]="searchFG"
+              [name]="'search'"
+              [parentSearchVisible]="isGlobalSearchVisible"
+              (parentFilterVisible)="enableGlobalSearch()"
+            ></admin-search-bar>
+          </div>
+          <div class="filter-range-wrapper">
+            <hospitality-bot-daterange
+              class="date-range temp-width"
+              [timezone]="timezone"
+              (onDateRangeFilter)="applyDateRangeFilter($event)"
+              (removeVisibility)="disableFilter()"
+            ></hospitality-bot-daterange>
+          </div>
+          <div
+            class="site-select"
+            *ngIf="isSitesAvailable && isCreateWithSubscribed"
+          >
+            <admin-site-action></admin-site-action>
+          </div>
+        </div>
+        <div class="options2">
+          <div class="notification-wrapper">
+            <div class="temp-width">
+              <div
+                class="header--button notification-icon"
+                (click)="enableNotification(main)"
+              >
+                <img
+                  class="filter-icon"
+                  src="assets/svg/notification-bell.svg"
+                  alt="notification"
+                />
+                <div
+                  class="notification-count"
+                  *ngIf="unreadCount && unreadCount > 0"
+                >
+                  {{ unreadCount }}
+                </div>
+              </div>
+              <div
+                class="notification"
+                *ngIf="isNotificationVisible"
+                [@slideInOut]
+              >
+                <admin-notification
+                  [notificationFilterData]="notificationFilterData"
+                  (onCloseNotification)="closeNotification()"
+                  (filterData)="setNotificationFilterData($event)"
+                ></admin-notification>
+              </div>
+            </div>
+          </div>
+          <div class="dropdown-wrapper">
+            <admin-profile-dropdown></admin-profile-dropdown>
+          </div>
+          <div class="filter-range-wrapper">
+            <div class="temp-width positionRel">
+              <div (click)="enableGlobalFilter(main)" class="header--button">
+                <img
+                  class="filter-icon"
+                  src="assets/svg/Filter-Icon.svg"
+                  alt="filter"
+                />
+              </div>
+              <div
+                class="filter-wrapper"
+                *ngIf="
+                  isGlobalFilterVisible &&
+                  (filterService.emitFilterValue$ | async) as initialFilterValue
+                "
+                [@slideInOut]
+              >
+                <admin-filter
+                  [initialFilterValue]="initialFilterValue"
+                  (onCloseFilter)="isGlobalFilterVisible = false"
+                  (onApplyFilter)="applyFilter($event)"
+                  (onResetFilter)="resetFilter($event)"
+                ></admin-filter>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="progress-bar">
+      <mat-progress-bar
+        *ngIf="
+          progressSpinnerService.isProgressSpinnerVisible &&
+          !checkForMessageRoute()
+        "
+        mode="query"
+      ></mat-progress-bar>
+    </div>
+
+    <div
+      class="main-panel--container"
+      [ngClass]="{
+        disabled:
+          (isGlobalFilterVisible && !checkForMessageRoute()) ||
+          (isNotificationVisible && !checkForMessageRoute())
+      }"
+    >
+      <div id="main-layout" class="main" #main>
+        <div class="blackscreen"></div>
+        <div id="main-router" class="router__wrapper">
+          <router-outlet></router-outlet>
+        </div>
+        <admin-footer id="main-footer"></admin-footer>
+      </div>
+    </div>
+  </div>
+</div>

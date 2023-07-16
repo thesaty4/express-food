@@ -1,0 +1,126 @@
+// color-variables
+
+// white palate
+
+$layout-background: #f4f5f6;
+$message-background: #f7f8fa;
+$primary-text-bg: #e8e2ff;
+$background-grey: #f8f9fb;
+$accordian-header: #f1f2f7;
+$headingBg: #edeef1;
+$table-header: #f1f2f7;
+$header-background: #f4f5f7;
+$border: #eee;
+$white: #ffffff;
+$notification: #fee6e9;
+$accordian-background: #e8eef5;
+$progress-bar-arrivals-base: #e7f4f6;
+$blackPrime-base: #f7f7f7;
+
+//state color
+$paid-state: #4bc0c0;
+$unpaid-state: #ff6384;
+$default-state: #555555;
+$active-state: #1468f9;
+$failed-state: #e31717;
+$inactive-state: #ef1d45;
+$draft-state: #bebebe;
+$completed-state: #30ce0b;
+$success-state: #52b33f;
+$warning-state: #e39117;
+$unavailable-state: #ffbf04;
+
+// linear-gradients
+
+$login-freda-bg: linear-gradient(132deg, #01a4e9 1%, #0074a6 106%);
+$login-heda-bg: linear-gradient(312deg, #ac14b7 99%, #765bd5 1%);
+$secondaryGradient-bg: linear-gradient(to bottom, #8b0eaa, #4414a5);
+$primaryGradient-bg: transparent
+  linear-gradient(180deg, #6462e0 0%, #303db4 100%) 0% 0% no-repeat padding-box;
+
+// red palate
+
+$darkRed: #e80000;
+$mediumRed: #e31717;
+$lightRed: #f04949;
+
+// grey palate
+
+$whiteDeep: #f1f1f1;
+$borderCol: #e2e2e2;
+$grayLight: #d4d4d4;
+$tabStats: #b4b4b4;
+$grayMedium: #8995a3;
+$grayAuth: #555555;
+$inActive: #b5b5c3;
+$scrollBar-thumb: #8f8f8f;
+$subtitle: #6d7580;
+$inActiveTab: #b5b5c3;
+$paginator: #aaa;
+$subItem_heading: rgba(255, 255, 255, 0.8);
+
+// black palate
+
+$black: #000;
+$blackPrime: #00000070;
+$question: #545454;
+$amount: #2e3440;
+$hoverBG: rgba(0, 0, 0, 0.03);
+$boxShadow: #0000000d;
+$hoverBGlight: rgba(232, 238, 245, 0.25);
+$table-room-bg: rgb(72, 192, 72, 0.1);
+$primary-black: #484848;
+$subtitle: #727272;
+$tooltip: #484848;
+$blackPrime-1: 0px 0px 6px #b8bbbe;
+$subItem_heading_hover: rgba(255, 255, 255, 0.24);
+
+// green palate
+$posCompare: #52b33f;
+$resolved: #31bb92;
+
+// blue palate
+
+$success-color: #389f99;
+$progress-bar-arrivals: #1495a4;
+$priority-medium: #25a2e2;
+$load-more: rgba(37, 162, 226);
+$initiated: #6bacf8;
+$light-blue: #3e8ef7;
+$tab-menu-link: #2187d5;
+$reset-link: #5391d4;
+$unsubscribe-Visit: #166dff;
+$text-bot: #745af2;
+$primary: #5f38f9;
+$primaryBlue: #0239cf;
+$authColor: #4b56c0;
+$button-blue: #4b56c0;
+$secondary: #002046;
+$btn-shadow: #4b56c04d;
+$hover-box-shadow: #0368ff42;
+$btnShadow: rgba(75, 86, 192, 0.16);
+$btnDefault: #4b56c033;
+$primary-cta: #5f38f9;
+$primary-hover: #4423c6;
+$primary-active: #341a9c;
+$primary-pressed: #341a9c;
+$nav-bg-color: #010034;
+$backColor: #020229;
+$title: #001037;
+$secondary2: #00162b;
+$mat-icon: #5f65b0;
+$tableCol-border: #218af31a;
+$unsubscribe-Head: #1f4380;
+$unsubscribe-Visit: #166dff;
+$accordian-label: #787c9e;
+$chat-background: #8161ff;
+$option-hover: #673ab71f;
+
+// yellow palate
+
+$initiated-2: #ff8f00;
+$priority-high: #ff8f00;
+$text-email: #faa700;
+$warning: #f6b155;
+$dark-warning: #fc9d03;
+$no-received: #ffec8c;

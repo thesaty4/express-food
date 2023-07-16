@@ -1,0 +1,79 @@
+<div class="global_search" #searchBar (click)="searchResult.toggle($event)">
+  <span class="p-input-icon-right">
+    <i *ngIf="!searchValue" class="pi pi-search"></i>
+    <mat-icon *ngIf="searchValue" (click)="clearSearch()" class="cross_icon"
+      >cancel</mat-icon
+    >
+    <form [formGroup]="parentForm">
+      <input
+        type="text"
+        pInputText
+        [formControlName]="name"
+        placeholder="Search by Name, Number, Conf no..."
+        (focus)="onFocus()"
+      />
+    </form>
+  </span>
+</div>
+
+<p-overlayPanel
+  [ngStyle]="{ visibility: searchDropdownVisible ? 'visible' : 'hidden' }"
+  #searchResult
+  class="search-result__overlay"
+>
+  <div
+    *ngIf="searchDropdownVisible && parentSearchVisible"
+    class="global_search__dropdown"
+  >
+    <div class="global_search__dropdown__result">
+      <ng-container *ngFor="let option of searchOptions; let i = index">
+        <ng-container [ngSwitch]="option.type">
+          <ng-container *ngSwitchCase="'GUEST'">
+            <div
+              class="global_search__dropdown__result__option"
+              (click)="setOptionSelection(option)"
+            >
+              <div class="image"><img src="assets/svg/guest-tab.svg" /></div>
+              <div class="detail">{{ option.label }}</div>
+            </div>
+          </ng-container>
+          <ng-container *ngSwitchCase="'PACKAGES'">
+            <div
+              class="global_search__dropdown__result__option"
+              (click)="openEditPackage(option.id)"
+            >
+              <div class="image"><img src="assets/svg/box.svg" /></div>
+              <div class="detail">{{ option.label }}</div>
+
+              <div class="description">{{ option.description }}</div>
+            </div>
+          </ng-container>
+          <ng-container *ngSwitchCase="'RESERVATIONS'">
+            <div
+              class="global_search__dropdown__result__option"
+              (click)="setOptionSelection(option)"
+            >
+              <div class="image"><img src="assets/svg/chair.svg" /></div>
+              <div class="detail">{{ option.bookingNumber }}</div>
+              <div class="description">{{ option.label }}</div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="searchOptions.length === 0">
+        <div class="no_result">No results found</div>
+      </ng-container>
+    </div>
+    <ng-container
+      *ngIf="
+        searchOptions.length >= 3 &&
+        searchOptions.length < this.results.searchResults.length
+      "
+    >
+      <div class="show-all" (click)="getAllResults()">
+        See all results for '{{ parentForm.get('search').value }}'
+      </div>
+    </ng-container>
+  </div>
+</p-overlayPanel>
